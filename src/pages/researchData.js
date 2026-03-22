@@ -12,7 +12,7 @@ export const researchList = [
     ]
   },
   {
-    org: "NIT Trichy — Autopilot & Bio-Inspired Control",
+    org: "NIT Trichy — Autopilot & Bio-Inspired Optimization",
     date: "Feb 2024 – Sep 2025",
     role: "Guide: Prof. Dr. Ramakalyan Ayyagari & Prof. Subbareddy Chitta",
     loc: "Trichy, India",
@@ -23,7 +23,7 @@ export const researchList = [
     ]
   },
   {
-    org: "Indian Institute of Science, Bengaluru",
+    org: "IISC, Bengaluru",
     date: "May 2024 – Aug 2024",
     role: "Guide: Prof. Dr. Jishnu Keshavan",
     loc: "Bengaluru, India",

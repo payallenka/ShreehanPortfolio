@@ -12,9 +12,9 @@ export const experienceList = [
     ]
   },
   {
-    org: "Indian Institute of Science, Bengaluru",
+    org: "IISC, Bengaluru",
     date: "May 2024 – Aug 2024",
-    role: "Research Intern — Prof. Dr. Jishnu Keshavan",
+    role: "Drone Research Intern",
     loc: "Bengaluru, India",
     points: [
       "Designed and motion-studied a UAV docking mechanism in Autodesk Fusion 360 to enable payload lifting in multi-drone operations; the final design was used for fabrication and assembly.",
