@@ -24,6 +24,7 @@ import {
 
 import { researchList } from './pages/researchData';
 import { experienceList } from './pages/experienceData';
+import { extracurricularList } from './pages/experienceData';
 import { projectsList } from './pages/projectsData';
 import { publicationsList } from './pages/publicationsData';
 import { skillsData, achievementsData } from './pages/skillsData';
@@ -314,6 +315,31 @@ const App = () => {
                 <p className="text-blue-600 dark:text-blue-400 font-medium mb-3">{exp.org}</p>
                 <ul className="space-y-2 text-slate-600 dark:text-slate-400">
                   {exp.points.map((point, i) => <li key={i} className="text-sm">• {point}</li>)}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Extracurriculars Section */}
+      <section id="extracurriculars" className="py-24 bg-slate-50 dark:bg-slate-900">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="flex items-center gap-4 mb-12">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white">Extracurriculars</h2>
+            <div className="h-px flex-1 bg-slate-200 dark:bg-slate-800"></div>
+          </div>
+          <div className="space-y-12">
+            {extracurricularList.map((item, idx) => (
+              <div key={idx} className="relative pl-8 border-l-2 border-slate-100 dark:border-slate-800 hover:border-blue-400 transition-colors">
+                <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white dark:bg-slate-900 border-4 border-blue-500"></div>
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">{item.role}</h3>
+                  <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">{item.date}</span>
+                </div>
+                <p className="text-blue-600 dark:text-blue-400 font-medium mb-3">{item.org}</p>
+                <ul className="space-y-2 text-slate-600 dark:text-slate-400">
+                  {item.points.map((point, i) => <li key={i} className="text-sm">• {point}</li>)}
                 </ul>
               </div>
             ))}
