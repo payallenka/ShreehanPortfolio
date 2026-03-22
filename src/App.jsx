@@ -184,7 +184,6 @@ const App = () => {
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 text-blue-700 dark:text-blue-300 text-xs font-bold tracking-wide">
               <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div>
               CONTROL 
-              <span className="mx-2 text-blue-400"></span>
               THEORY
               <span className="mx-2 text-blue-400">&bull;</span>
               OPTIMIZATION
