@@ -12,7 +12,7 @@ export const experienceList = [
     ]
   },
   {
-    org: "IISC, Bengaluru",
+    org: "IISc, Bengaluru",
     date: "May 2024 – Aug 2024",
     role: "Drone Research Intern",
     loc: "Bengaluru, India",

@@ -23,7 +23,7 @@ export const researchList = [
     ]
   },
   {
-    org: "IISC, Bengaluru",
+    org: "IISc, Bengaluru",
     date: "May 2024 – Aug 2024",
     role: "Guide: Prof. Dr. Jishnu Keshavan",
     loc: "Bengaluru, India",
