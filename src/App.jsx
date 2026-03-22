@@ -31,8 +31,8 @@ import { skillsData, achievementsData } from './pages/skillsData';
 // --- MAIN APP COMPONENT ---
 
 const App = () => {
-  const [activeSection, setActiveSection] = useState('home');
-  const [scrolled, setScrolled] = useState(false);
+  const [activeSection] = useState('home');
+  const [scrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   // Theme logic fix: Initialize from local storage or system preference
   const [theme, setTheme] = useState(() => {
