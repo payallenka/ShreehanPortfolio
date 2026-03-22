@@ -68,7 +68,7 @@ const App = () => {
 
   const highlights = [
     { label: 'Publications', value: '3 Papers', icon: <BookOpen className="w-5 h-5" /> },
-    { label: 'Fellowship', value: 'NITT STEM Award', icon: <Award className="w-5 h-5" /> },
+    { label: 'Fellowship', value: 'NITT STEM Research Fellowship', icon: <Award className="w-5 h-5" /> },
     { label: 'Grant', value: '₹70,000 Grant', icon: <Globe className="w-5 h-5" /> },
   ];
 
@@ -97,7 +97,7 @@ const App = () => {
             <div className="bg-blue-600 text-white p-1.5 rounded-lg group-hover:rotate-12 transition-transform">
               <Cpu size={20} />
             </div>
-            <span className="font-bold text-xl tracking-tight text-slate-800 dark:text-white">Shreehan Kate</span>
+            <span className="font-bold text-xl tracking-tight text-slate-800 dark:text-white">Shreehan Santosh Kate</span>
           </div>
           
           {/* Desktop Nav */}
@@ -195,8 +195,7 @@ const App = () => {
               Shreehan Santosh <span className="">Kate</span>
             </h1>
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
-              Specializing in <span className="font-semibold text-slate-900 dark:text-white underline decoration-blue-500 decoration-2 underline-offset-4">Autonomous Navigation</span>, 
-              Nonlinear Control, and Reinforcement Learning for UAVs and Legged Robots.
+              Specializing in Optimal and Nonlinear Control, Reinforcement Learning for Manipulation and Autonomous systems.
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
               <a href="mailto:shreehan1912@gmail.com" className="flex items-center gap-2 bg-slate-900 dark:bg-blue-600 text-white px-6 py-3 rounded-xl hover:opacity-90 transition-all hover:scale-105 font-semibold">
@@ -238,9 +237,9 @@ const App = () => {
                   className="object-cover w-full h-full rounded-full" 
                   style={{ objectPosition: 'center top' }}
                 />
-                <div className="absolute bottom-0 left-0 w-full p-4 bg-white/40 dark:bg-slate-900/60 backdrop-blur-sm flex flex-col items-center">
+                {/* <div className="absolute bottom-0 left-0 w-full p-4 bg-white/40 dark:bg-slate-900/60 backdrop-blur-sm flex flex-col items-center">
                    <span className="text-[10px] font-bold text-blue-700 dark:text-blue-400 tracking-widest uppercase">NIT Trichy</span>
-                </div>
+                </div> */}
               </div>
               <div className="absolute -top-4 -right-4 bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-lg border border-slate-100 dark:border-slate-700 animate-bounce">
                 <Cpu size={24} className="text-blue-500" />
