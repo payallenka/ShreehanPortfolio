@@ -5,24 +5,25 @@ import {
   Mail,
   GraduationCap,
   BookOpen,
-  Briefcase,
-  Code,
+  
   Award,
-  ExternalLink,
+  
   ChevronRight,
   Cpu,
   Navigation,
-  Box,
+  
   Globe,
   FileText,
   MapPin,
   Sun,
   Moon,
-  ExternalLink as LinkIcon
+  ExternalLink as LinkIcon,
+  X,
+  Menu
 } from 'lucide-react';
 
 import { researchList } from './pages/researchData';
-import { experienceList, extracurricularList } from './pages/experienceData';
+import { experienceList } from './pages/experienceData';
 import { projectsList } from './pages/projectsData';
 import { publicationsList } from './pages/publicationsData';
 import { skillsData, achievementsData } from './pages/skillsData';
@@ -32,7 +33,7 @@ import { skillsData, achievementsData } from './pages/skillsData';
 const App = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [scrolled, setScrolled] = useState(false);
-  
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   // Theme logic fix: Initialize from local storage or system preference
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -54,29 +55,12 @@ const App = () => {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
-  // Handle scroll for navbar and active section
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-      
-      const sections = ['about', 'research', 'publications', 'experience', 'projects', 'skills'];
-      for (const section of [...sections].reverse()) {
-        const element = document.getElementById(section);
-        if (element && window.scrollY >= element.offsetTop - 150) {
-          setActiveSection(section);
-          break;
-        }
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const navLinks = [
     { name: 'About', href: 'about' },
     { name: 'Research', href: 'research' },
     { name: 'Publications', href: 'publications' },
     { name: 'Experience', href: 'experience' },
+    { name: 'Extracurriculars', href: 'extracurriculars' },
     { name: 'Projects', href: 'projects' },
     { name: 'Skills', href: 'skills' },
   ];
@@ -91,19 +75,23 @@ const App = () => {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
   };
 
+   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+   
   return (
     <div className="min-h-screen font-sans selection:bg-blue-100 selection:text-blue-700 bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
-      
       {/* Navigation */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-sm py-3' 
+        scrolled || isMenuOpen
+          ? 'bg-white/90 dark:bg-slate-950/90 backdrop-blur-md shadow-sm py-3' 
           : 'bg-transparent py-5'
       }`}>
         <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
           <div 
             className="flex items-center gap-2 group cursor-pointer" 
-            onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
+            onClick={() => {
+              window.scrollTo({top: 0, behavior: 'smooth'});
+              setIsMenuOpen(false);
+            }}
           >
             <div className="bg-blue-600 text-white p-1.5 rounded-lg group-hover:rotate-12 transition-transform">
               <Cpu size={20} />
@@ -111,6 +99,7 @@ const App = () => {
             <span className="font-bold text-xl tracking-tight text-slate-800 dark:text-white">Shreehan Kate</span>
           </div>
           
+          {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a 
@@ -131,6 +120,49 @@ const App = () => {
               {theme === 'dark' ? <Sun className="w-4 h-4 text-yellow-400" /> : <Moon className="w-4 h-4 text-blue-600" />}
               <span className="text-xs font-bold">{theme === 'dark' ? 'Light' : 'Dark'}</span>
             </button>
+          </div>
+
+          {/* Mobile Nav Trigger */}
+          <div className="flex md:hidden items-center gap-4">
+            <button
+              onClick={toggleTheme}
+              className="p-2 bg-slate-200 dark:bg-slate-800 rounded-lg text-slate-700 dark:text-slate-200"
+            >
+              {theme === 'dark' ? <Sun className="w-5 h-5 text-yellow-400" /> : <Moon className="w-5 h-5 text-blue-600" />}
+            </button>
+            <button 
+              onClick={toggleMenu}
+              className="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors"
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu Dropdown */}
+        <div className={`md:hidden absolute top-full left-0 w-full overflow-hidden transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-screen opacity-100 border-b border-slate-200 dark:border-slate-800' : 'max-h-0 opacity-0 pointer-events-none'}`}>
+          <div className="bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl px-6 py-8 flex flex-col gap-6">
+            {navLinks.map((link) => (
+              <a 
+                key={link.name}
+                href={`#${link.href}`}
+                onClick={() => setIsMenuOpen(false)}
+                className={`text-lg font-semibold flex items-center justify-between transition-colors ${
+                  activeSection === link.href ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-300'
+                }`}
+              >
+                {link.name}
+                <ChevronRight size={18} className={activeSection === link.href ? 'opacity-100' : 'opacity-0'} />
+              </a>
+            ))}
+            <div className="pt-6 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-4">
+              <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Connect</p>
+              <div className="flex gap-4">
+                <a href="https://github.com/shreehank22" className="p-3 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-600 dark:text-slate-300"><Github size={20} /></a>
+                <a href="https://www.linkedin.com/in/shreehankate/" className="p-3 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-600 dark:text-slate-300"><Linkedin size={20} /></a>
+                <a href="mailto:shreehan1912@gmail.com" className="p-3 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-600 dark:text-slate-300"><Mail size={20} /></a>
+              </div>
+            </div>
           </div>
         </div>
       </nav>
