@@ -14,7 +14,8 @@ export const publicationsList = [
     statusColor: "green",
     year: "2025",
     authors: "Shreehan Santosh Kate, T. Shuprajhaa, K. Srinivasan",
-    venue: "5th International Conference on Emerging Electronics and Automation"
+    venue: "5th International Conference on Emerging Electronics and Automation",
+    link: "https://drive.google.com/drive/u/1/folders/1yU5gb-d-D4MZdCXlzVD_Qjbz4Jb59mCc"
   },
   {
     title: "Bio-Inspired Optimization of LQR Controllers for Feedback-Linearized Cruise Missiles",
@@ -22,6 +23,7 @@ export const publicationsList = [
     statusColor: "blue",
     year: "2024",
     authors: "Chitta Subbareddy, Ramakalyan Ayyagari, Shreehan Santosh Kate",
-    venue: "9th International Conference on Inventive Systems and Control (ICISC)"
+    venue: "9th International Conference on Inventive Systems and Control (ICISC)",
+    link: "https://ieeexplore.ieee.org/document/11188300"
   }
 ];

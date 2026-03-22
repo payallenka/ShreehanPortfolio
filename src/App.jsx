@@ -339,6 +339,18 @@ const App = () => {
                     <span className={pub.statusColor === 'green' ? 'text-emerald-400' : 'text-yellow-400'}>{pub.status}</span>
                     <span className="text-slate-500">{pub.year}</span>
                   </div>
+                  {pub.link && (
+                    <div className="mt-2">
+                      <a
+                        href={pub.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block text-blue-400 underline hover:text-blue-300 font-semibold text-xs"
+                      >
+                        View More
+                      </a>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
