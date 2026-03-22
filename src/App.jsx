@@ -447,7 +447,7 @@ const App = () => {
             </a>
           </div>
           <div className="pt-12 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-slate-400 text-sm">© 2024 Shreehan Santosh Kate • Researcher</p>
+            <p className="text-slate-400 text-sm">© Shreehan Santosh Kate • Researcher</p>
             <div className="flex gap-6 text-slate-400 text-xs font-bold uppercase tracking-widest">
               <span className="flex items-center gap-1"><MapPin size={12} /> NIT Trichy Alum</span>
             </div>
