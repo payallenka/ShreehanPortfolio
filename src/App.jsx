@@ -226,7 +226,7 @@ const App = () => {
               <div className="absolute inset-0 bg-blue-600 rounded-full blur-3xl opacity-20 animate-pulse"></div>
               <div className="w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-800 dark:to-slate-900 rounded-full flex items-center justify-center border-4 border-white dark:border-slate-800 shadow-2xl relative z-10 overflow-hidden">
                 <img 
-                  src="/sh.jpeg" 
+                  src="/shreehanKate.jpeg" 
                   alt="Shreehan Kate" 
                   className="object-cover w-full h-full rounded-full" 
                   style={{ objectPosition: 'center top' }}
