@@ -195,7 +195,7 @@ const App = () => {
               Shreehan Santosh <span className="">Kate</span>
             </h1>
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
-              Specializing in Optimal and Nonlinear Control, Reinforcement Learning for Manipulation and Autonomous systems.
+              Specializing in Optimal and Nonlinear Control, Reinforcement Learning for Robotic Manipulation and Autonomous systems.
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
               <a href="mailto:shreehan1912@gmail.com" className="flex items-center gap-2 bg-slate-900 dark:bg-blue-600 text-white px-6 py-3 rounded-xl hover:opacity-90 transition-all hover:scale-105 font-semibold">
@@ -261,13 +261,13 @@ const App = () => {
           </div>
           <div className="prose prose-slate prose-lg max-w-none text-slate-600 dark:text-slate-400 leading-relaxed">
             <p>
-              I am a robotics and control researcher passionate about building <span className="font-bold text-slate-900 dark:text-white">intelligent, adaptive systems</span>. 
-              My work spans nonlinear control, reinforcement learning, kinematic modeling, and computer vision.
+              I am a researcher working in the intersection of control theory, optimization, and learning-based methods for autonomous systems.
             </p>
             <p>
-              Currently, I am a <span className="text-blue-600 dark:text-blue-400 font-bold">Robotics Software Intern at xTerra Robotics, IIT Kanpur</span>. 
-              I have also interned at <span className="font-semibold text-slate-900 dark:text-white">IISc Bengaluru</span> and conducted research at <span className="font-semibold text-slate-900 dark:text-white">NIT Trichy</span>. 
-              My mission is to push the boundaries of how machines interact with complex environments.
+              My work spans nonlinear control design, reinforcement learning-based adaptive controllers, kinematic modelling, and computer vision, from robotic manipulation to UAVs and legged robots.
+            </p>
+            <p>
+              Currently a Robotics Software Intern at xTerra Robotics, IIT Kanpur, making contributions towards the future of robotics in India. I've worked on compliant manipulation for robotic arms and on quadruped-arm platforms for loco-manipulation tasks. Previously, I've interned at IISc Bengaluru and conducted research at NIT Trichy across multiple labs.
             </p>
           </div>
         </div>
