@@ -86,8 +86,8 @@ const App = () => {
       {/* Navigation */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled || isMenuOpen
-          ? 'bg-white/90 dark:bg-slate-950/90 backdrop-blur-md shadow-sm py-3' 
-          : 'bg-transparent py-5'
+          ? 'bg-white/90 dark:bg-slate-950/90 backdrop-blur-md shadow-sm py-3 bg-blue-50/80 dark:bg-slate-800/80'
+          : 'bg-blue-50/70 dark:bg-slate-800/70 py-5'
       }`}>
         <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
           <div 
