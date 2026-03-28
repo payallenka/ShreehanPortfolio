@@ -28,6 +28,7 @@ import { extracurricularList } from './pages/experienceData';
 import { projectsList } from './pages/projectsData';
 import { publicationsList } from './pages/publicationsData';
 import { skillsData, achievementsData } from './pages/skillsData';
+import ProjectPopup from './components/ProjectPopup';
 
 // --- MAIN APP COMPONENT ---
 
@@ -35,6 +36,8 @@ const App = () => {
   const [activeSection] = useState('home');
   const [scrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // Popup state for projects
+  const [popupProject, setPopupProject] = useState(null);
   // Theme logic fix: Initialize from local storage or system preference
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -180,7 +183,7 @@ const App = () => {
         </div>
         
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-12 gap-12 items-center">
-          <div className="md:col-span-8 space-y-6">
+          <div className="md:col-span-8 space-y-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 text-blue-700 dark:text-blue-300 text-xs font-bold tracking-wide">
               <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div>
               <div className="flex flex-nowrap items-center w-full gap-2 text-[10px] xs:text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl font-bold">
@@ -277,17 +280,20 @@ const App = () => {
       <section id="research" className="py-24 bg-slate-50 dark:bg-slate-900 transition-colors">
         <div className="max-w-6xl mx-auto px-6">
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">Research Focus</h2>
-            <p className="text-slate-500 dark:text-slate-400 max-w-xl">Pushing the boundaries of autonomous navigation and control through rigorous mathematical modeling.</p>
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-1">Research Experience</h2>
+            <p className="text-slate-500 dark:text-slate-400 max-w-xl mt-0">Pushing the boundaries of autonomous navigation and control through rigorous mathematical modeling.</p>
           </div>
           <div className="grid gap-8">
             {researchList.map((res, idx) => (
               <div key={idx} className="bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all p-8 group">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{res.org}</h3>
-                  <span className="text-xs font-bold px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 uppercase">{res.date}</span>
+                  <div className="flex flex-col items-end min-w-[120px]">
+                    <span className="text-xs font-bold px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 uppercase mb-1">{res.date}</span>
+                    <span className="text-xs text-slate-500 dark:text-slate-400">{res.loc}</span>
+                  </div>
                 </div>
-                <p className="text-blue-600 dark:text-blue-400 font-medium mb-4">{res.role} • <span className="text-slate-400">{res.loc}</span></p>
+                <p className="text-blue-600 dark:text-blue-400 font-medium mb-4">{res.role}</p>
                 <ul className="grid gap-3">
                   {res.points.map((point, i) => (
                     <li key={i} className="flex gap-3 text-slate-600 dark:text-slate-400">
@@ -296,11 +302,31 @@ const App = () => {
                     </li>
                   ))}
                 </ul>
+                {res.links && res.links.length > 0 && (
+                  <div className="mt-4">
+                    <div className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">External Links:</div>
+                    <div className="flex flex-col gap-2">
+                      {res.links.map((link, i) => (
+                        <a
+                          key={i}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-medium text-sm hover:bg-blue-100 dark:hover:bg-blue-900/60 transition-colors border border-blue-100 dark:border-blue-800 shadow-sm group"
+                        >
+                          <svg className="w-4 h-4 text-blue-500 group-hover:text-blue-700 dark:text-blue-400 dark:group-hover:text-blue-200 transition-colors" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6m5-1 3 3m0 0-7 7m7-7V4a1 1 0 0 0-1-1h-3"/></svg>
+                          {link.label}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
           </div>
         </div>
       </section>
+
 
       {/* Experience Section */}
       <section id="experience" className="py-24 bg-white dark:bg-slate-950">
@@ -310,44 +336,41 @@ const App = () => {
             <div className="h-px flex-1 bg-slate-200 dark:bg-slate-800"></div>
           </div>
           <div className="space-y-12">
-            {experienceList.map((exp, idx) => (
-              <div key={idx} className="relative pl-8 border-l-2 border-slate-100 dark:border-slate-800 hover:border-blue-400 transition-colors">
-                <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white dark:bg-slate-900 border-4 border-blue-500"></div>
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">{exp.role}</h3>
-                  <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">{exp.date}</span>
+              {experienceList.map((item, idx) => (
+                <div key={idx} className="relative pl-8 border-l-2 border-slate-100 dark:border-slate-800 hover:border-blue-400 transition-colors">
+                  <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white dark:bg-slate-900 border-4 border-blue-500"></div>
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white">{item.role}</h3>
+                    <div className="flex flex-col items-end min-w-[120px]">
+                      <span className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">{item.date}</span>
+                      <span className="text-xs text-slate-500 dark:text-slate-400">{item.location || item.loc}</span>
+                    </div>
+                  </div>
+                  <p className="text-blue-600 dark:text-blue-400 font-medium mb-3">{item.org}</p>
+                  <ul className="space-y-2 text-slate-600 dark:text-slate-400 mb-2">
+                    {item.points.map((point, i) => <li key={i} className="text-sm">• {point}</li>)}
+                  </ul>
+                  {item.links && item.links.length > 0 && (
+                    <div className="mt-2">
+                      <div className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">External Links:</div>
+                      <div className="flex flex-col gap-2">
+                        {item.links.map((link, i) => (
+                          <a
+                            key={i}
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-medium text-sm hover:bg-blue-100 dark:hover:bg-blue-900/60 transition-colors border border-blue-100 dark:border-blue-800 shadow-sm group"
+                          >
+                            <svg className="w-4 h-4 text-blue-500 group-hover:text-blue-700 dark:text-blue-400 dark:group-hover:text-blue-200 transition-colors" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6m5-1 3 3m0 0-7 7m7-7V4a1 1 0 0 0-1-1h-3"/></svg>
+                            {link.label}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
-                <p className="text-blue-600 dark:text-blue-400 font-medium mb-3">{exp.org}</p>
-                <ul className="space-y-2 text-slate-600 dark:text-slate-400">
-                  {exp.points.map((point, i) => <li key={i} className="text-sm">• {point}</li>)}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Extracurriculars Section */}
-      <section id="extracurriculars" className="py-24 bg-slate-50 dark:bg-slate-900">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="flex items-center gap-4 mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white">Extracurriculars</h2>
-            <div className="h-px flex-1 bg-slate-200 dark:bg-slate-800"></div>
-          </div>
-          <div className="space-y-12">
-            {extracurricularList.map((item, idx) => (
-              <div key={idx} className="relative pl-8 border-l-2 border-slate-100 dark:border-slate-800 hover:border-blue-400 transition-colors">
-                <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white dark:bg-slate-900 border-4 border-blue-500"></div>
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">{item.role}</h3>
-                  <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">{item.date}</span>
-                </div>
-                <p className="text-blue-600 dark:text-blue-400 font-medium mb-3">{item.org}</p>
-                <ul className="space-y-2 text-slate-600 dark:text-slate-400">
-                  {item.points.map((point, i) => <li key={i} className="text-sm">• {point}</li>)}
-                </ul>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </section>
@@ -364,7 +387,13 @@ const App = () => {
               <div key={idx} className="bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all">
                 <div className="flex justify-between items-start mb-4">
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white">{proj.title}</h3>
-                  <a href={proj.link} className="p-2 text-slate-400 hover:text-blue-600 transition-colors"><LinkIcon size={20} /></a>
+                  <button
+                    className="p-2 text-slate-400 hover:text-blue-600 transition-colors"
+                    onClick={() => setPopupProject(proj)}
+                    aria-label="Show project details"
+                  >
+                    <LinkIcon size={20} />
+                  </button>
                 </div>
                 <p className="text-slate-600 dark:text-slate-400 mb-6 line-clamp-2">{proj.desc}</p>
                 <div className="flex flex-wrap gap-2">
@@ -374,6 +403,36 @@ const App = () => {
                     </span>
                   ))}
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* Project Popup */}
+        <ProjectPopup project={popupProject} onClose={() => setPopupProject(null)} />
+      </section>
+
+      {/* Extracurriculars Section */}
+      <section id="extracurriculars" className="py-24 bg-slate-50 dark:bg-slate-900">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="flex items-center gap-4 mb-12">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white">Extracurriculars</h2>
+            <div className="h-px flex-1 bg-slate-200 dark:bg-slate-800"></div>
+          </div>
+          <div className="space-y-12">
+            {extracurricularList.map((item, idx) => (
+              <div key={idx} className="relative pl-8 border-l-2 border-slate-100 dark:border-slate-800 hover:border-blue-400 transition-colors">
+                <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white dark:bg-slate-900 border-4 border-blue-500"></div>
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">{item.role}</h3>
+                  <div className="flex flex-col items-end min-w-[120px]">
+                    <span className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">{item.date}</span>
+                    <span className="text-xs text-slate-500 dark:text-slate-400">{item.location}</span>
+                  </div>
+                </div>
+                <p className="text-blue-600 dark:text-blue-400 font-medium mb-3">{item.org}</p>
+                <ul className="space-y-2 text-slate-600 dark:text-slate-400">
+                  {item.points.map((point, i) => <li key={i} className="text-sm">• {point}</li>)}
+                </ul>
               </div>
             ))}
           </div>
@@ -399,7 +458,19 @@ const App = () => {
                   <p className="text-sm text-slate-400 italic mb-3">{pub.authors}</p>
                   <div className="flex flex-wrap gap-4 text-[10px] font-bold uppercase tracking-widest">
                     <span className="text-blue-400">{pub.venue}</span>
-                    <span className={pub.statusColor === 'green' ? 'text-emerald-400' : 'text-yellow-400'}>{pub.status}</span>
+                    <span
+                      className={
+                        pub.statusColor === 'green'
+                          ? 'text-emerald-400'
+                          : pub.statusColor === 'yellow'
+                          ? 'text-yellow-400'
+                          : pub.statusColor === 'orange'
+                          ? 'text-orange-400'
+                          : 'text-slate-400'
+                      }
+                    >
+                      {pub.status}
+                    </span>
                     <span className="text-slate-500">{pub.year}</span>
                   </div>
                   {pub.link && (

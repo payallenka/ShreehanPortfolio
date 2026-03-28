@@ -1,7 +1,7 @@
 // Experience data for the Experience page
 export const experienceList = [
   {
-    org: "xTerra Robotics — IIT Kanpur",
+    org: "xTerra Robotics",
     date: "Aug 2025 – Present",
     role: "Robotics Software Development Intern",
     loc: "Kanpur, India",
@@ -9,17 +9,12 @@ export const experienceList = [
       "Architected a joint and Cartesian impedance control framework in C++ and ROS 2 for stable posture regulation and compliant task-space manipulation of a 5-DOF robotic arm.",
       "Modeled a wrench disturbance term that maps manipulator-induced forces to a floating-base whole-body controller, ensuring quadruped stability during dynamic loco-manipulation.",
       "Led design and development of a kinematic model and performed link-length optimisation for a 7-DOF redundant manipulator intended for space applications."
-    ]
-  },
-  {
-    org: "IISc, Bengaluru",
-    date: "May 2024 – Aug 2024",
-    role: "Drone Research Intern",
-    loc: "Bengaluru, India",
-    points: [
-      "Designed and motion-studied a UAV docking mechanism in Autodesk Fusion 360 to enable payload lifting in multi-drone operations; the final design was used for fabrication and assembly.",
-      "Devised a computer vision-based approach for ArUco marker detection using OpenCV and Python to facilitate precise landing of UAVs on moving UGV platforms.",
-      "Estimated 6-DoF camera pose by implementing the Perspective-n-Point (PnP) algorithm in Python to compute rotational and translational vectors from 3D world and 2D image points."
+    ],
+    links: [
+      {
+        label: "GitHub Repository",
+        url: "https://github.com/shreehank22/Drone-Dog-Solution"
+      }
     ]
   },
   {
@@ -30,6 +25,12 @@ export const experienceList = [
     points: [
       "Prepared image and video datasets using CVAT for computer vision tasks through annotation, preprocessing, and augmentation.",
       "Trained and fine-tuned YOLOv5 models for object detection and classification of inventory items in warehouses; evaluated performance using mAP and F1-score."
+    ],
+    links: [
+      {
+        label: "Project Docs (Google Drive)",
+        url: "https://drive.google.com/drive/folders/1qIiYOlbZnRS4QoxvRCaJ2MiBdvF2LUM5"
+      }
     ]
   }
 ];
@@ -39,7 +40,7 @@ export const extracurricularList = [
     org: "SENSORS, NIT Trichy",
     date: "Jul 2025 – Feb 2026",
     role: "Chairperson",
-    loc: "NIT Trichy",
+    location: "Tiruchirappalli, India",
     points: [
       "Led planning, coordination, and execution of SENSORS — the national-level technical symposium of the Instrumentation & Control Department, NIT Trichy.",
       "Organised events and guest lectures, delivering a high-impact technical and networking platform for students, industry professionals, and researchers."
@@ -49,7 +50,7 @@ export const extracurricularList = [
     org: "PSI Racing Team — NIT Trichy",
     date: "Aug 2023 – Aug 2024",
     role: "Engineer — Fabrication & Design",
-    loc: "NIT Trichy",
+    location: "Tiruchirappalli, India",
     points: [
       "Lectured on vehicle dynamics and hands-on fabrication methods for 100+ undergraduates.",
       "Contributed to suspension and steering design for the team's all-terrain vehicle."
