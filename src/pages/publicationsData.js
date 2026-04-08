@@ -2,7 +2,7 @@
 export const publicationsList = [
   {
     title: "Adaptive PID Control for Quadrotor UAVs Using Feedback Linearization and Deep Reinforcement Learning",
-    status: "Submitted",
+    status: "Accepted",
     statusColor: "orange",
     year: "2026",
     authors: "Shreehan Santosh Kate, T. Shuprajhaa, K. Srinivasan",
