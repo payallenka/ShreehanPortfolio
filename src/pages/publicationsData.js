@@ -6,7 +6,7 @@ export const publicationsList = [
     statusColor: "orange",
     year: "2026",
     authors: "Shreehan Santosh Kate, T. Shuprajhaa, K. Srinivasan",
-    venue: "IEEE North-East India International Energy Conversion Conference and Exhibition (NIEICE) 2026"
+    venue: "IEEE North-East India International Energy Conversion Conference and Exhibition (NEIECCE) 2026"
   },
   {
     title: "Deep Reinforcement Learning Framework for Adaptive Control of Swing-up Inverted Pendulum",
